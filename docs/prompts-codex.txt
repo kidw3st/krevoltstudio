@@ -1,0 +1,169 @@
+KREOVOLT STUDIO. ПРОМПТЫ ДЛЯ ГЕНЕРАЦИИ АССЕТОВ (Codex / генерация изображений)
+Версия 1, 10.09.2026
+
+Как пользоваться
+1. Каждый ассет имеет код (A00, A01, ...). Такой же код стоит внутри заглушки на сайте.
+2. Скопируйте блок PROMPT целиком в Codex. Строку STYLE BASE вставляйте в начало каждого промпта.
+3. Сохраните результат под именем из строки FILE в папку assets/img/ репозитория.
+4. Подключение: внутри заглушки <figure class="ph" data-asset="Axx"> в блок <div class="ph__box"> добавьте
+   <img class="ph__img" src="../assets/img/ИМЯ_ФАЙЛА" alt="ОПИСАНИЕ" loading="lazy" width="W" height="H">
+   (на главной странице путь начинается с ./assets/, на внутренних с ../assets/).
+   Штриховка и подпись заглушки скроются автоматически после загрузки картинки.
+5. Логотип (A00) подключается отдельно, см. раздел A00.
+
+Палитра сайта (использовать в промптах как есть)
+- Фон листа: #E6E7E2 (светло-серый чертёжный лист)
+- Светлая поверхность: #EEEFEA
+- Чернила: #151617
+- Цвет «под напряжением» (акцент): #F2B700
+- Линии: #C6C8C1
+
+STYLE BASE (вставлять в начало каждого промпта)
+Engineering-drawing world of a Russian digital studio "KreoVolt": flat light-gray drafting sheet background #E6E7E2, near-black ink #151617, a single accent color #F2B700 (signal yellow, matte, not neon), hairline 1px rules, sharp 90-degree corners, no rounded corners, no drop shadows, no gradients, no glow, no lens flare, no purple, no blue tint, no pastel colors, no emoji, no text unless specified, no watermark. Calm, precise, technical, premium.
+
+
+==========================================================================
+A00. ЛОГОТИП (знак + вордмарк)
+==========================================================================
+Где используется: шапка сайта, штамп (основная надпись), футер, favicon, OG-картинка, документы.
+Сейчас на сайте: временный знак (жёлтый квадрат с чёрной рамкой) и вордмарк «KREOVOLT», набранный шрифтом Sofia Sans Extra Condensed 800.
+
+Концепция
+Знак: «замкнутый контакт» из электрической схемы, вписанный в букву K.
+- Вертикальный штрих буквы K = шина (линия питания).
+- Две диагонали буквы K = подвижный контакт выключателя, который повернулся и замкнул цепь.
+- В точке, где диагонали сходятся с вертикалью, стоит узел: круг, залитый жёлтым #F2B700 с чёрной обводкой. Узел означает «под напряжением»: студия включает продукт.
+- Всё строится из линий одной толщины (как чертёж), без засечек, без наклона.
+Вордмарк: «KREOVOLT» прописными, очень узкий тяжёлый гротеск (образец: Sofia Sans Extra Condensed 800), трекинг слегка положительный, «STUDIO» мелко под вордмарком или справа, с широкой разрядкой.
+Варианты: 1) знак отдельно; 2) вордмарк отдельно; 3) горизонтальный лок-ап (знак слева, вордмарк справа); 4) вертикальный лок-ап; 5) монохром чёрный; 6) инверсия на чёрном #151617 (линии светлые #E6E7E2, узел жёлтый); 7) на жёлтом поле #F2B700 (линии чёрные, узел чёрный с белым кольцом).
+
+FILE: logo-mark.svg, logo-wordmark.svg, logo-horizontal.svg, logo-vertical.svg (+ PNG 2000 px по длинной стороне для каждого варианта)
+SIZE: векторный, квадратная сетка 64x64 единиц для знака
+
+PROMPT (для генерации картинки-референса знака):
+[STYLE BASE] Logo mark design, flat vector style, centered on a plain #E6E7E2 background. A monogram letter "K" constructed from schematic circuit strokes of uniform stroke weight: the vertical stem of the K is a straight bus line; the two diagonal strokes of the K are a single pivoting switch contact that has rotated to close the circuit; at the junction point of the stem and the diagonals sits a circular node filled with signal yellow #F2B700 and outlined in ink #151617. Geometric, monoline, sharp square line ends, no rounded corners, no serifs, no italics, no lightning bolt, no spark, no 3D, no gradient, no glow, no shadow, no background texture, no extra text. The mark should read clearly at 16 px favicon size and at 2 m signage size. Present 6 small variations in a grid on one sheet, each variation labeled only with a tiny number.
+
+PROMPT (для векторной сборки в Codex, если Codex пишет SVG):
+Create an SVG logo mark on a 64x64 viewBox for "KreoVolt": a letter K built from monoline circuit strokes (stroke #151617, stroke-width 6, square linecaps), vertical stem from (20,8) to (20,56); the K diagonals are one rotated switch contact: upper diagonal from the junction (20,32) to (46,10), lower diagonal from (20,32) to (46,54); a node circle at (20,32) r=7 fill #F2B700 stroke #151617 stroke-width 3. Also produce a wordmark SVG "KREOVOLT" in an extra-condensed heavy grotesk converted to outlines (font: Sofia Sans Extra Condensed weight 800, letter-spacing 0.02em, uppercase, color #151617) and a horizontal lockup where the mark height equals the cap height of the wordmark with a gap of 0.35 cap heights. Export additional variants: monochrome black, inverted on #151617 background (strokes #E6E7E2, node #F2B700), and on #F2B700 background (strokes #151617, node #151617 with a 2px #E6E7E2 ring). Keep all corners sharp.
+
+NEGATIVE: lightning bolt, spark, plug icon, gradient, glow, neon, rounded corners, purple, blue, 3D bevel, shadow, hand-lettering, script font.
+
+Подключение на сайте: заменить блок <a class="brand" ...>KreoVolt</a> в шапке каждой страницы на <a class="brand" href="./"><img src="./assets/img/logo-horizontal.svg" alt="KreoVolt Studio" height="28"></a> (на внутренних страницах пути с ../). Favicon: заменить assets/img/favicon.svg на logo-mark.svg (сохранить имя favicon.svg).
+
+
+==========================================================================
+A01. OG-КАРТИНКА (превью для соцсетей и мессенджеров)
+==========================================================================
+Где используется: meta og:image на всех страницах.
+FILE: og.png
+SIZE: 1200x630 px, PNG
+
+PROMPT:
+[STYLE BASE] Social preview card 1200x630. Composition on a drafting sheet #E6E7E2 with a 1 px ink border inset 24 px from the edges like an engineering drawing frame, and a small title block (rectangular table with thin rules) in the bottom-right corner. Left two thirds: the wordmark "KREOVOLT" set huge in an extra-condensed heavy sans (like Sofia Sans Extra Condensed 800), ink #151617, uppercase, and below it in smaller condensed caps the line "РАЗРАБОТКА, ДИЗАЙН И МАРКЕТИНГ В ОДНОЙ КОМАНДЕ" with the words "В ОДНОЙ КОМАНДЕ" highlighted by a flat yellow #F2B700 marker rectangle behind them. Right third: a vertical single-line electrical schematic (a source circle at top, five switch contacts in series, a lamp circle at the bottom) drawn in ink with the conductor highlighted by a thick yellow #F2B700 line running along it, as if checked with a highlighter. Flat vector look, crisp, no photo, no gradient, no shadow.
+
+NEGATIVE: photo, 3D, gradient, glow, neon, rounded card corners, blur, watermark, extra logos.
+
+
+==========================================================================
+A02. ОБЩИЙ ВИД ПРОДУКТА (3D-рендер для страницы «Услуги»)
+==========================================================================
+Где используется: страница /services/, сразу под заголовком, широкая заглушка A02.
+FILE: a02-services-general-view.png
+SIZE: 1600x900 px (16:9), PNG
+
+PROMPT:
+[STYLE BASE] Isometric 3D product render, studio lighting, matte materials. Subject: an assembly of modular blocks representing one digital product built as a system: a flat slab like a website page with a thin header line and rectangular content blocks, a cube with a small shopping cart pictogram embossed on its face (online store), a tall narrow block shaped like a phone screen with speech-bubble rectangles (Telegram bot), a low wide block with pipe-like connectors linking to the others (integrations and automation). All blocks are matte dark graphite #151617 with light-gray #E6E7E2 edges highlighted as thin drafting lines; exactly one element per block glows softly in matte yellow #F2B700 (a switch toggle, a status node, a cursor bar). The blocks sit on a light-gray drafting sheet with faint 1 px grid rules and are connected by thin ink conductor lines with small circular junction nodes. Camera 30 degrees isometric, centered composition, generous empty margin at the left and right, no text.
+
+NEGATIVE: neon, glossy plastic, reflections, purple, blue light, gradient background, bokeh, people, text, logos, screen UI with readable words.
+
+
+==========================================================================
+A03. КЕЙС: КОРПОРАТИВНЫЙ САЙТ (макет на ноутбуке)
+==========================================================================
+Где используется: главная (лента «Работы») и /work/, заглушка A03.
+FILE: a03-case-corporate-site.png
+SIZE: 1600x1000 px (16:10), PNG
+Важно: это демонстрационная картинка. На сайте она подписана как заглушка, пока нет реального кейса. Не должна содержать читаемых названий компаний.
+
+PROMPT:
+[STYLE BASE] Product mockup photo-render: a thin matte-black laptop on a light-gray drafting sheet #E6E7E2, seen from a slight three-quarter angle, screen showing a corporate website with an engineering-drawing aesthetic: light-gray page, one extra-condensed black headline set in three lines, a yellow #F2B700 marker highlight behind two words, a thin-ruled specification table below, a single yellow rectangular button. Text on the screen must be abstracted into gray bars and blocks, no readable words. Beside the laptop: a few sheets of paper with hairline wireframes and a mechanical pencil. Soft even daylight, no strong shadows, matte surfaces, muted colors, high detail, no people.
+
+NEGATIVE: readable text, brand names, Apple logo, glossy reflections, neon, purple, blue tint, dramatic shadows, bokeh.
+
+
+==========================================================================
+A04. КЕЙС: ИНТЕРНЕТ-МАГАЗИН (каталог и корзина)
+==========================================================================
+Где используется: главная и /work/, заглушка A04.
+FILE: a04-case-online-store.png
+SIZE: 1600x1000 px (16:10), PNG
+
+PROMPT:
+[STYLE BASE] Product mockup render: a tablet and a phone lying side by side on a light-gray drafting sheet #E6E7E2, top-down view with slight perspective. Both screens show an online store in the same engineering-drawing aesthetic: light-gray background, a strict grid of product cards with sharp corners and 1 px ink rules, abstract product photos replaced by flat dark-graphite objects, a cart panel on the phone with a single yellow #F2B700 checkout button, prices abstracted into short gray bars, no readable words. Around the devices: a folded paper spec sheet with thin table rules, a small cardboard parcel box with a yellow strap, a pencil. Even daylight, matte materials, no people.
+
+NEGATIVE: readable text, currency symbols, brand names, glossy reflections, neon, purple, gradients, bokeh, dramatic shadows.
+
+
+==========================================================================
+A05. КЕЙС: TELEGRAM-БОТ (диалог на экране телефона)
+==========================================================================
+Где используется: главная и /work/, заглушка A05.
+FILE: a05-case-telegram-bot.png
+SIZE: 1600x1000 px (16:10), PNG
+
+PROMPT:
+[STYLE BASE] Product mockup render: a matte-black smartphone standing upright on a light-gray drafting sheet #E6E7E2, slightly rotated, close-up. The screen shows a messenger chat with a bot: alternating message bubbles drawn as sharp-cornered rectangles with 1 px ink outlines, an inline keyboard of three rectangular buttons at the bottom where one button is filled yellow #F2B700, a small avatar square of the bot as a yellow node on a black square. All words abstracted into gray bars, no readable text. Next to the phone lies a printed flowchart of the bot dialog drawn as a schematic with rectangles, diamonds and connector lines in ink, one path highlighted with yellow marker. Even daylight, matte, no people.
+
+NEGATIVE: readable text, Telegram logo, paper plane icon, glossy reflections, neon, purple, blue accent, gradients, bokeh.
+
+
+==========================================================================
+A06. ФОТОГРАФИЯ РАБОЧЕГО ПРОСТРАНСТВА СТУДИИ
+==========================================================================
+Где используется: /about/, заглушка A06. Лучше заменить реальной фотографией студии.
+FILE: a06-studio-workspace.jpg
+SIZE: 1600x1067 px (3:2), JPG
+
+PROMPT:
+Photorealistic editorial photograph, 35 mm lens, natural daylight from a large window. A small design and development studio workspace: a long light-gray table with two monitors showing abstract wireframe layouts (no readable text), a printed engineering-style drawing of a website pinned to a light wall with masking tape, a roll of drafting paper, a yellow #F2B700 mechanical pencil and a yellow highlighter on the table, matte black notebooks, one plant. No people in frame. Muted palette: light gray, graphite, warm wood, one yellow accent. Calm, precise, tidy, documentary style, slight film grain, no HDR.
+
+NEGATIVE: people, faces, readable text, logos, neon, purple, heavy color grading, HDR, fisheye, clutter.
+
+
+==========================================================================
+A07. ФОТОГРАФИЯ КОМАНДЫ ЗА РАБОТОЙ
+==========================================================================
+Где используется: /about/, блок «Вместе», заглушка A07. Лучше заменить реальной фотографией команды.
+FILE: a07-team-working.jpg
+SIZE: 1200x1500 px (4:5), JPG
+
+PROMPT:
+Photorealistic documentary photograph, vertical 4:5, natural window light. Three people from behind and in profile (faces not clearly visible) gathered around a light-gray table, looking at a large printed page layout and a laptop with an abstract wireframe (no readable text). One person points at a section highlighted with a yellow #F2B700 marker. Clothing in muted grays and black, one yellow detail. Light-gray walls, graphite furniture. Calm, focused atmosphere, slight film grain, no HDR, no posed smiles.
+
+NEGATIVE: faces looking at camera, stock-photo smiles, readable text, logos, neon, purple, heavy color grading, HDR.
+
+
+==========================================================================
+A08. ПОРТРЕТ: РАЗРАБОТКА
+A09. ПОРТРЕТ: ДИЗАЙН
+A10. ПОРТРЕТ: МАРКЕТИНГ
+==========================================================================
+Где используется: /about/, блок «Команда», заглушки A08, A09, A10.
+Рекомендация: использовать реальные фотографии участников команды, снятые в одном стиле по промпту ниже как техническому заданию для фотографа. Сгенерированные лица людей на странице «Команда» лучше не публиковать.
+FILE: a08-portrait-dev.jpg, a09-portrait-design.jpg, a10-portrait-marketing.jpg
+SIZE: 1000x1000 px (1:1), JPG
+
+PROMPT (задание фотографу или генерация для макета):
+Square 1:1 portrait, photorealistic, neutral light-gray #E6E7E2 seamless background, soft frontal window light, matte skin, no retouching gloss. Half-body, subject slightly off-center, calm neutral expression, looking just past the camera. Clothing: plain dark graphite or black, no logos. One small yellow #F2B700 element in frame (a pencil in a pocket, a badge, a notebook edge). Sharp corners, no vignette, no bokeh, slight film grain. Three portraits in the same setup for consistency: 1) developer with a laptop edge visible, 2) designer holding a printed layout, 3) marketer with a printed chart on paper.
+
+NEGATIVE: studio glamour light, teeth-smile stock look, gradients, colored gels, neon, purple, heavy retouching, watermarks.
+
+
+==========================================================================
+ФОРМАТЫ И КОНТРОЛЬ КАЧЕСТВА
+==========================================================================
+- Рендеры (A02-A05): PNG, sRGB, без прозрачности, фон #E6E7E2 сплошной, чтобы картинка сливалась с листом сайта.
+- Фотографии (A06-A10): JPG качество 85, sRGB.
+- Логотип (A00): SVG с обведёнными контурами (текст в кривых), плюс PNG.
+- Перед публикацией сжать: PNG через oxipng или squoosh, JPG через squoosh. Целевой размер файла: до 400 КБ для широких картинок.
+- Проверить на сайте: заглушка исчезает, картинка не растянута (object-fit: cover), alt-текст заполнен.
