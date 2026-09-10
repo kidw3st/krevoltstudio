@@ -1,0 +1,11 @@
+# Локальные и служебные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+node_modules/
+.impeccable/review/
+.impeccable/config.local.json
+
+# Локальные настройки инструментов
+.claude/
