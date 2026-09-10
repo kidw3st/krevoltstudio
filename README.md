@@ -58,7 +58,9 @@ npx serve .
 
 ## Деплой
 
-При пуше в ветку `main` workflow `.github/workflows/pages.yml` публикует сайт на GitHub Pages. Если Pages ещё не включён и workflow не смог включить его сам, зайдите в Settings, Pages, Source: GitHub Actions и перезапустите workflow.
+GitHub Pages раздаёт ветку `gh-pages` (корень репозитория). Рабочая ветка `main`: при каждом пуше в неё workflow `.github/workflows/pages.yml` копирует файлы сайта в `gh-pages`, и через минуту-две они появляются по живому адресу. Вручную в `gh-pages` ничего писать не нужно.
+
+Если workflow не запускается, проверьте Settings, Actions, General: должны быть разрешены workflow и запись для `GITHUB_TOKEN` (Workflow permissions: Read and write). Источник Pages смотрите в Settings, Pages: Deploy from a branch, `gh-pages`, `/ (root)`.
 
 Внешних сетевых зависимостей у сайта нет: шрифты и GSAP лежат в репозитории.
 
